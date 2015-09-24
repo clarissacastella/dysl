@@ -8,6 +8,7 @@ https://github.com/gr33ndata/irlib
 '''
 
 # Author: Tarek Amr <@gr33ndata> 
+# Updates: Clarissa Xavier (clarissacastella)
 
 import sys, math
 
@@ -431,11 +432,15 @@ class LM:
             'calc_id': '',
             'actual_id': actual_id,
             'seen_unseen_count': (0,0),
-            'all_probs': []
+            'all_probs': [],
+    	    #CLARISSA - ADD LANGUAGE INFORMATION
+	    'doc_id':[]
         }
         terms = self.lr_padding(doc_terms)
         ngrams = self.to_ngrams(terms) 
         for doc_id in self.term_count_n:
+            #CLARISSA - ADD LANGUAGE INFORMATION
+            calculated['doc_id'].append(doc_id) 
             #print '\n', doc_id, ':'
             doc_pr = 0
             new_doc = True
