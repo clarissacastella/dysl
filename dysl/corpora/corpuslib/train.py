@@ -15,7 +15,7 @@ class Train:
             #self.root = 'corpora/corpus-esaren'
             self.root = __file__.rsplit('/',2)[0] + '/corpus-esaren'
             self.using_builtin_training = True
-        #print self.root
+        print self.root
         self.root_depth = len(self.root.split('/'))
 
         # Set of languages
@@ -39,6 +39,15 @@ class Train:
 
     def get_lang_set(self):
         return list(self.lang_set)
+
+    def addModel(self, text=u'', lang=''): #CLARISSA
+	if not text or not lang:
+            raise Exception("Error: No input text given!")
+        if not lang in self.temp_train_data:
+            self.temp_train_data[lang] = [text]
+        else:
+            self.temp_train_data[lang].append(text)
+
 
     def add(self, text=u'', lang=''):
         if self.using_builtin_training:
